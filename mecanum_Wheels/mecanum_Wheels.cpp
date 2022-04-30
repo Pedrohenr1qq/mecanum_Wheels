@@ -22,15 +22,15 @@ Mecanum::Mecanum(int left[6],int right[6]){
 //==========individual motor controls===========
 //motor 1 clockwise
 void Mecanum::clockwise_m1(){
-  digitalWrite(pLeft.n1,HIGH);
-  digitalWrite(pLeft.n2,LOW);
+  digitalWrite(pLeft.n1,LOW);
+  digitalWrite(pLeft.n2,HIGH);
   analogWrite(pLeft.pwm1,255);
 }
 
 //motor 1 anticlockwise
 void Mecanum::antiClockwise_m1(){
-  digitalWrite(pLeft.n1,LOW);
-  digitalWrite(pLeft.n2,HIGH);
+  digitalWrite(pLeft.n1,HIGH);
+  digitalWrite(pLeft.n2,LOW);
   analogWrite(pLeft.pwm1,255);
 }
 
@@ -50,15 +50,15 @@ void Mecanum::antiClockwise_m2(){
 
 //motor 3 clockwise
 void Mecanum::clockwise_m3(){
-  digitalWrite(pLeft.n3,HIGH);
-  digitalWrite(pLeft.n4,LOW);
+  digitalWrite(pLeft.n3,LOW);
+  digitalWrite(pLeft.n4,HIGH);
   analogWrite(pLeft.pwm2,255);
 }
 
 //motor 3 anticlockwise
 void Mecanum::antiClockwise_m3(){
-  digitalWrite(pLeft.n3,LOW);
-  digitalWrite(pLeft.n4,HIGH);
+  digitalWrite(pLeft.n3,HIGH);
+  digitalWrite(pLeft.n4,LOW);
   analogWrite(pLeft.pwm2,255);
 }
 
@@ -76,3 +76,97 @@ void Mecanum::antiClockwise_m4(){
 }
 
 //==========two motors============
+
+void Mecanum::forward_left(){
+  antiClockwise_m1();
+  antiClockwise_m3();
+}
+
+void Mecanum::forward_right(){
+  clockwise_m2();
+  clockwise_m4();
+}
+
+void Mecanum::back_left(){
+  clockwise_m1();
+  clockwise_m3();
+}
+
+void Mecanum::back_right(){
+  antiClockwise_m2();
+  antiClockwise_m4();
+}
+
+void Mecanum::convergence_left(){
+  antiClockwise_m1();
+  clockwise_m3();
+}
+
+void Mecanum::convergence_right(){
+  clockwise_m2();
+  antiClockwise_m4();
+}
+void Mecanum::divergence_left(){
+  clockwise_m1();
+  antiClockwise_m3();
+}
+void Mecanum::divergence_right(){
+  antiClockwise_m2();
+  clockwise_m4();
+}
+
+void Mecanum::quadrant_1(){
+  antiClockwise_m1();
+  clockwise_m4();
+}
+
+
+void Mecanum::quadrant_2(){
+  clockwise_m2();
+  antiClockwise_m3();
+}
+
+void Mecanum::quadrant_3(){
+  clockwise_m1();
+  antiClockwise_m4();
+}
+
+
+void Mecanum::quadrant_4(){
+  antiClockwise_m2();
+  clockwise_m3();
+}
+
+
+
+//-------all motors========
+void Mecanum::forward(){
+  forward_left();
+  forward_right();
+}
+
+void Mecanum::back(){
+  back_left();
+  back_right();
+}
+
+void Mecanum::left(){
+  convergence_left();
+  divergence_right();
+}
+
+void Mecanum::right(){
+  divergence_left();
+  convergence_right();
+}
+
+void Mecanum::spinCentral_cw(){
+  forward_left();
+  back_right();
+}
+
+void Mecanum::spinCentral_acw(){
+  back_left();
+  forward_right();
+}
+
