@@ -151,13 +151,17 @@ void Mecanum::back(){
 }
 
 void Mecanum::left(){
-  convergence_left();
-  divergence_right();
+  robot.clockwise_m3();
+  robot.antiClockwise_m1();
+  robot.antiClockwise_m4();
+  robot.clockwise_m2();
 }
 
 void Mecanum::right(){
-  divergence_left();
-  convergence_right();
+  robot.clockwise_m1();
+  robot.antiClockwise_m3();
+  robot.antiClockwise_m2();
+  robot.clockwise_m4();
 }
 
 void Mecanum::spinCentral_cw(){
