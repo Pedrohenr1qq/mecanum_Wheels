@@ -1,0 +1,9 @@
+gripperLibrary	KEYWORD1
+Gripper	KEYWORD2
+setServosPins	KEYWORD2
+setPinBase	KEYWORD2
+gripperMoviment	KEYWORD2
+armTopMovement	KEYWORD2
+armMiddleMovement	KEYWORD2
+armDownMovement	KEYWORD2
+baseMovement	KEYWORD2
